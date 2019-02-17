@@ -12,6 +12,7 @@ export default new Vuex.Store({
     taskFailed: 0,
     duration: 7,
     skill: 7,
+    onboardingSeen: false,
     operations: {
       add: true,
       sub: true,
@@ -52,6 +53,9 @@ export default new Vuex.Store({
     addTaskFailed (state) {
       state.taskFailed = state.taskFailed + 1;
     },
+    acquireOnboarding (state) {
+      state.onboardingSeen = true;
+    }
   },
   plugins: [createPersistedState()]
 });

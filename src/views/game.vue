@@ -2,10 +2,10 @@
   .uk-container
     div.uk-flex.uk-flex-center
       .uk-card.uk-card-default.uk-card-hover.uk-card-body.uk-width-large
-        router-link.uk-button.uk-button-default(:to="{ name: 'home' }") 
-              span(uk-icon="icon: close")
-              span.uk-margin-left Отмена
-        .uk-align-right.uk-margin-remove-bottom
+        .uk-flex.uk-flex-between.uk-flex-middle.uk-flex-row
+          router-link.uk-button.uk-button-default(:to="{ name: 'home' }") 
+            span(uk-icon="icon: close")
+            span Отмена
           input.uk-input.uk-form-width-small(type="text", readonly, :value="timeLeft")
         .uk-container.uk-margin-top 
             .uk-flex.uk-flex-between.uk-flex-middle.uk-flex-row
@@ -56,7 +56,14 @@
             :disabled="!answer.second || !answer.third"
             @click="test"
           ) =
-
+    #win-dialog(uk-modal, @hidden="goHome")
+      .uk-modal-dialog.uk-margin-auto-vertical.uk-modal-body
+        h2.uk-modal-title Вы выиграли! 😃 😃 😃
+        button.uk-modal-close-outside(uk-close)
+    #lose-dialog(uk-modal, @hidden="goHome")
+      .uk-modal-dialog.uk-margin-auto-vertical.uk-modal-body
+        h2.uk-modal-title Вы проиграли! 😭 😭 😭
+        button.uk-modal-close-outside(uk-close)
 </template>
 <style>
   .invisible {
@@ -64,6 +71,7 @@
   }
 </style>
 <script lang="ts">
+import UIkit from 'uikit';
 import dayjs from 'dayjs';
 import _padStart from 'lodash.padstart';
 import { Component, Vue } from 'vue-property-decorator';
@@ -146,10 +154,10 @@ export default class Game extends Vue {
     // Returns random number from 1 to skill level
     return Math.ceil(Math.random() * this.skill);
   }
-  private getExponentOperand(): number {
+  private getExponentOperand (): number {
     // ^2...^3 is pretty enough
-    return Math.ceil(Math.random() * 2); 
-  } 
+    return Math.ceil(Math.random() * 2);
+  }
   private generateTask () {
     const candidates = [];
     if (this.operations.add) {
@@ -232,6 +240,9 @@ export default class Game extends Vue {
       this.answer.third += String(value);
     }
   }
+  private goHome () {
+    this.$router.push({name: 'home'});
+  }
   private clearField () {
     if (this.activeControl === 0) {
       this.answer.second = '';
@@ -255,16 +266,12 @@ export default class Game extends Vue {
   private loseGame () {
     this.stopTimer();
     this.addTaskFailed();
-    this.$router.push({name: 'home'});
-    alert('U lost');
+    UIkit.modal(document.getElementById('lose-dialog')).show();
   }
   private winGame () {
     this.stopTimer();
     this.addTaskSolved();
-    this.$router.push({name: 'home'});
-    alert('U win');
+    UIkit.modal(document.getElementById('win-dialog')).show();
   }
-
 }
-
 </script>

@@ -1,12 +1,13 @@
 <template lang="pug">
   .uk-container
     div.uk-flex.uk-flex-center
-      .uk-card.uk-card-default.uk-card-hover.uk-card-body.uk-width-large
-        h3.uk-card-title Привет!
-        div
-          p Добро пожаловать на {{days(daysInTraining) }}
-          p Ваш последний результат: решено {{tasksSolved}} из {{tasksTotal}}
-          p Общая точность: {{percent(accuracy)}}%
+      .uk-card.uk-card-default.uk-card-hover.uk-width-large
+        .uk-card-header
+          h3.uk-card-title Привет!
+        .uk-card-body
+          p Добро пожаловать на {{days(daysInTraining) }}!
+          p Ваш последний результат: решено {{tasksSolved}} из {{tasksTotal}}.
+          p Общая точность: {{percent(accuracy)}}%.
           h4 Настройки
           form
             .uk-margin-top.uk-margin-top
@@ -19,7 +20,7 @@
                 step="1", 
                 @input="changeDuration(Number($event.srcElement.value))"
               )
-              .uk-flex.uk-flex-center Длительность: {{duration}} минут
+              .uk-flex.uk-flex-center Длительность: {{minutes(duration)}}
             .uk-margin-top
               .uk-align-left.uk-margin-remove-bottom 1
               .uk-align-right.uk-margin-remove-bottom 10
@@ -52,7 +53,9 @@
                 label
                   input.uk-checkbox(type="checkbox", :checked="operations.pow", @input="changeOperationItem('pow', $event.srcElement.checked)")
                   span.uk-margin-left Возведение в степень
-          .uk-align-right.uk-margin-top.uk-margin-remove-bottom
+        .uk-card-footer
+          .uk-flex.uk-flex-between.uk-flex-middle.uk-flex-row
+            router-link(:to="{ name: 'onboarding'}") Повторить обучение
             router-link.uk-button.uk-button-default(:to="{name: 'game'}") Play!
 </template>
 
@@ -67,6 +70,7 @@ import {
 
 @Component
 export default class Home extends Vue {
+  @State onboardingSeen;
   @State operations;
   @Getter daysInTraining;
   @State tasksSolved;
@@ -78,6 +82,11 @@ export default class Home extends Vue {
   @Mutation changeDuration;
   @Mutation changeSkill;
   private onKeyDownHandler: any;
+  private mounted () {
+    if (!this.onboardingSeen) {
+      this.$router.push({name: 'onboarding'});
+    }
+  }
   private beforeMount () {
     this.onKeyDownHandler = (event: any) => {
       this.onKeyDown(event);
@@ -111,5 +120,25 @@ export default class Home extends Vue {
       return 'первый тренировочный день';
     }
   }
+  private minutes (value: number): string {
+    return this._quantity(value, 'минута', 'минуты', 'минут');
+  }
+  private _quantity (value: number, one: string, few: string, many: string): string {
+    if (value % 100 < 20 && value % 100 > 10) {
+      return String(value) + ' ' + many;
+    } else {
+      switch (value % 10) {
+        case 1:
+          return String(value) + ' ' + one;
+        case 2:
+        case 3:
+        case 4:
+          return String(value) + ' ' + few;
+        default:
+          return String(value) + ' ' + many;
+      }
+    }
+  }
+
 }
 </script>

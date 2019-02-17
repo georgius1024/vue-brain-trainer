@@ -12,11 +12,13 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/onboarding',
+      name: 'onboarding',
+      component: () => import(/* webpackChunkName: "onboarding" */ './views/onboarding.vue'),
+    },
+    {
       path: '/game',
       name: 'game',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "game" */ './views/game.vue'),
     },
   ],
