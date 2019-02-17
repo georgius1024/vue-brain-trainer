@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`game.vue renders without error 1`] = `
+<div class="uk-container">
+  <div class="uk-flex uk-flex-center">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-width-large">
+      <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row"><button class="uk-button uk-button-default"><span uk-icon="icon: close"></span><span>Выход</span></button><input type="text" readonly="readonly" class="uk-input uk-form-width-small right-align"></div>
+      <div class="uk-container uk-margin-top">
+        <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row"><input readonly="readonly" tabindex="-1" class="uk-input uk-form-width-xsmall right-align"><label class="uk-margin-left uk-margin-right">*</label><input readonly="readonly" tabindex="-1" class="uk-input uk-form-width-xsmall right-align active"><label class="uk-margin-left uk-margin-right">*</label><input readonly="readonly" tabindex="-1" class="uk-input uk-form-width-xsmall right-align"></div>
+        <div class="uk-margin-top"><span>=0</span></div>
+      </div>
+      <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row uk-margin-medium-top"><button class="uk-icon-button uk-button-danger">1</button><button class="uk-icon-button uk-button-danger">2</button><button class="uk-icon-button uk-button-danger">3</button><button class="uk-icon-button uk-button-primary">&lt;</button></div>
+      <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row uk-margin-medium-top"><button class="uk-icon-button uk-button-danger">4</button><button class="uk-icon-button uk-button-danger">5</button><button class="uk-icon-button uk-button-danger">6</button><button class="uk-icon-button uk-button-primary">&gt;</button></div>
+      <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row uk-margin-medium-top"><button class="uk-icon-button uk-button-danger">7</button><button class="uk-icon-button uk-button-danger">8</button><button class="uk-icon-button uk-button-danger">9</button><button class="uk-icon-button uk-button-primary">CE</button></div>
+      <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row uk-margin-medium-top"><button class="uk-icon-button uk-button-danger invisible"></button><button class="uk-icon-button uk-button-danger">0</button><button class="uk-icon-button uk-button-danger invisible"></button><button disabled="disabled" class="uk-icon-button uk-button-primary">=</button></div>
+    </div>
+  </div>
+  <div id="win-dialog" uk-modal="uk-modal">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+      <h2 class="uk-modal-title">Правильно! 😃 😃 😃</h2><button uk-close="uk-close" class="uk-modal-close-outside"></button>
+    </div>
+  </div>
+  <div id="lose-dialog" uk-modal="uk-modal">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+      <h2 class="uk-modal-title">Неправильно! 😭 😭 😭</h2><button uk-close="uk-close" class="uk-modal-close-outside"></button>
+    </div>
+  </div>
+  <div id="stats-dialog" uk-modal="uk-modal">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+      <h2 class="uk-modal-title">Раунд завершен</h2>
+      <p>Вы решили 0 из 0 предложенных задач за 00:00</p><button uk-close="uk-close" class="uk-modal-close-outside"></button>
+    </div>
+  </div>
+</div>
+`;

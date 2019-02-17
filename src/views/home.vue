@@ -55,7 +55,9 @@
                   span.uk-margin-left Возведение в степень
         .uk-card-footer
           .uk-flex.uk-flex-between.uk-flex-middle.uk-flex-row
-            router-link(:to="{ name: 'onboarding'}") Повторить обучение
+            router-link.uk-button.uk-button-link(:to="{ name: 'onboarding'}") 
+              span(uk-icon="icon: question")
+              span.uk-margin-small-left Повторить обучение
             router-link.uk-button.uk-button-default(:to="{name: 'game'}") Play!
 </template>
 

@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     trainingStarted: dayjs(),
     tasksSolved: 0,
-    taskFailed: 0,
+    tasksFailed: 0,
     duration: 7,
     skill: 7,
     onboardingSeen: false,
@@ -26,10 +26,10 @@ export default new Vuex.Store({
       return dayjs().diff(dayjs(state.trainingStarted).startOf('day'), 'day');
     },
     tasksTotal (state) {
-      return state.tasksSolved + state.taskFailed;
+      return state.tasksSolved + state.tasksFailed;
     },
     accuracy (state) {
-      const total = state.tasksSolved + state.taskFailed;
+      const total = state.tasksSolved + state.tasksFailed;
       if (total) {
         return state.tasksSolved * 100 / total;
       } else {
@@ -50,8 +50,8 @@ export default new Vuex.Store({
     addTaskSolved (state) {
       state.tasksSolved = state.tasksSolved + 1;
     },
-    addTaskFailed (state) {
-      state.taskFailed = state.taskFailed + 1;
+    addTasksFailed (state) {
+      state.tasksFailed = state.tasksFailed + 1;
     },
     acquireOnboarding (state) {
       state.onboardingSeen = true;

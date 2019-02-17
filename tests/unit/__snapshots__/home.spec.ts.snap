@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home.vue renders without errors 1`] = `
+<div class="uk-container">
+  <div class="uk-flex uk-flex-center">
+    <div class="uk-card uk-card-default uk-card-hover uk-width-large">
+      <div class="uk-card-header">
+        <h3 class="uk-card-title">Привет!</h3>
+      </div>
+      <div class="uk-card-body">
+        <p>Добро пожаловать на первый тренировочный день!</p>
+        <p>Ваш последний результат: решено 0 из 0.</p>
+        <p>Общая точность: 0%.</p>
+        <h4>Настройки</h4>
+        <form>
+          <div class="uk-margin-top uk-margin-top">
+            <div class="uk-align-left uk-margin-remove-bottom">1</div>
+            <div class="uk-align-right uk-margin-remove-bottom">15</div><input type="range" min="1" max="15" step="1" class="uk-range">
+            <div class="uk-flex uk-flex-center">Длительность: 7 минут</div>
+          </div>
+          <div class="uk-margin-top">
+            <div class="uk-align-left uk-margin-remove-bottom">1</div>
+            <div class="uk-align-right uk-margin-remove-bottom">10</div><input type="range" min="1" max="10" step="1" class="uk-range">
+            <div class="uk-flex uk-flex-center">Сложность: 7</div>
+          </div>
+          <div class="uk-margin-top">
+            <div><label><input type="checkbox" class="uk-checkbox"><span class="uk-margin-left">Сложение</span></label></div>
+            <div><label><input type="checkbox" class="uk-checkbox"><span class="uk-margin-left">Вычитание</span></label></div>
+            <div><label><input type="checkbox" class="uk-checkbox"><span class="uk-margin-left">Умножение</span></label></div>
+            <div><label><input type="checkbox" class="uk-checkbox"><span class="uk-margin-left">Деление</span></label></div>
+            <div><label><input type="checkbox" class="uk-checkbox"><span class="uk-margin-left">Возведение в степень</span></label></div>
+          </div>
+        </form>
+      </div>
+      <div class="uk-card-footer">
+        <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-row">
+          <router-link-stub to="[object Object]" tag="a" event="click" class="uk-button uk-button-link"><span uk-icon="icon: question"></span><span class="uk-margin-small-left">Повторить обучение</span></router-link-stub>
+          <router-link-stub to="[object Object]" tag="a" event="click" class="uk-button uk-button-default">Play!</router-link-stub>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
